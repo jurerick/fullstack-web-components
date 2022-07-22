@@ -1,7 +1,7 @@
 describe("TextInputComponent", () => {
 
     it("should display error message on blur", () => {
-        cy.visit("http://localhost:6006/iframe.html?id=components-inputs-textinput--form&viewMode=story");
+        cy.visit("http://localhost:6006/iframe.html?id=components-inputs-textinput--form");
 
         cy.get("#root").get("[name='username']").should("be.visible").click();
 
@@ -21,7 +21,7 @@ describe("TextInputComponent", () => {
     });
 
     it("should not display error message when valid", () => {
-        cy.visit("http://localhost:6006/iframe.html?id=components-inputs-textinput--form&viewMode=story");
+        cy.visit("http://localhost:6006/iframe.html?id=components-inputs-textinput--form");
 
         cy.get("#root").get("[name='username']")
             .shadow()
