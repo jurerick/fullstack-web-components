@@ -3,6 +3,7 @@ on: [push]
 jobs:
 	build:
 		runs-on: ubuntu-latest
+		name: build and install dependencies
 		steps:
   		- uses: actions/checkout@v2
   		- name: Install node
