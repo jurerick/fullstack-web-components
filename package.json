@@ -97,5 +97,10 @@
   "private": true,
   "workspaces": [
     "packages/**/*"
-  ]
+  ],
+  "storybook-deployer": {
+    "gitUsername": "jurerick",
+    "gitEmail": "jur.porras@gmail.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
+  }
 }

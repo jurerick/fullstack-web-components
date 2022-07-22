@@ -15,5 +15,6 @@ jobs:
           cache: "yarn"
       - run: yarn install
       - run: yarn predeploy
-      - run: yarn deploy-storybook -- --ci --host-token-env-variable=GIT_TOKEN
-
+      - run: yarn deploy-storybook -- --ci
+        env:
+          GH_TOKEN: ${{github.actor}}:${{secrets.GIT_TOKEN}}
