@@ -1,5 +1,8 @@
 import { Component, attachShadow, html, css } from "@in/common";
 import { COOKIES, CookieService } from "./../../service/cookies";
+import { SESSION, SessionService } from "./../../service/session";
+
+const sessionService = new SessionService();
 
 const shadowTemplate = html`
     <app-header>Header</app-header>
@@ -113,6 +116,10 @@ export class MainView extends HTMLElement {
         attachShadow(this);
     }
 
+    get $dashboardLink() {
+        return this.shadowRoot.querySelector(".dashboard-link");
+    }
+
     get $cookieFooter() {
         return this.shadowRoot.querySelector("cookie-footer");
     }
@@ -125,5 +132,11 @@ export class MainView extends HTMLElement {
                 this.$cookieFooter.removeAttribute("hidden");
             }
         });
+
+        sessionService.getSession().then((res) => {
+            if(res.session === SESSION.OPEN) {
+                this.$dashboardLink.removeAttribute("hidden");
+            }
+        })
     }
 }

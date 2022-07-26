@@ -1,5 +1,8 @@
 import { Component, attachShadow, html, css, Listen } from "@in/common";
 import { SessionService, SESSION } from "./../../service/session";
+import { LocationService } from "./../../service/location";
+
+const locationService = new LocationService();
 
 const styles = css`
     :host {
@@ -91,6 +94,6 @@ export class AppHeader extends HTMLElement {
 
     @Listen("click", ".icon")
     onLogoClick() {
-        document.location.href = "/";
+        locationService.navigate("");
     }
 }

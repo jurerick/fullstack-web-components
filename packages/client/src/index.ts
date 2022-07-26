@@ -1,7 +1,10 @@
-const mainView = document.createElement("main-view");
+import { routes } from "./routes";
+import { Router } from "./router";
 
-document.querySelector("#root").appendChild(mainView);
+const router = new Router("#root", routes);
+
+export { routes, router, Router };
 
 export { ButtonComponent } from "@in/ui";
-export { MainView } from "./view/main/MainView";
+export { MainView, LoginView, DashboardView } from "./view";
 export { AppHeader, CookieFooter, Background } from "./component";
