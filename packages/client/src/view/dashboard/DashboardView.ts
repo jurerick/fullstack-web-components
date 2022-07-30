@@ -6,17 +6,6 @@ import {
 } from './../../component/header/AppHeader';
 import resolve from 'es6-template-strings';
 
-export {
-  ButtonComponent,
-  CardComponent,
-  TableCardComponent,
-  TableComponent,
-  TrComponent,
-  TdComponent,
-  TextInputComponent
-} from '@in/ui';
-export {AppHeader};
-
 const contactService = new ContactService('dashboard-channel');
 
 const styles = css`
@@ -48,19 +37,9 @@ const contentTemplate = html`
 
 const shadowTemplate = html`
   <app-header></app-header>
-  <div id="content-root">${contentTemplate}</div>
-`;
-
-export const template = () => `
-    <dashboard-view>
-        <template shadowroot="open">
-            <style>${resolve(styles)}</style>
-            ${resolve(HeaderTemplate)}
-            <div id="content-root">
-                ${contentTemplate}
-            </div>
-        </template>
-    </dashboard-view>
+  <div id="content-root">
+    ${contentTemplate}
+  </div>
 `;
 
 @Component({
@@ -91,3 +70,28 @@ export class DashboardView extends HTMLElement {
     };
   }
 }
+export const template = () => `
+    <dashboard-view>
+        <template shadowroot="open">
+            <style>${resolve(styles)}</style>
+
+            ${resolve(HeaderTemplate())}
+
+            <div id="content-root">
+                ${contentTemplate}
+            </div>
+        </template>
+    </dashboard-view>
+`;
+
+export {
+  ButtonComponent,
+  CardComponent,
+  TableComponent,
+  TableCardComponent,
+  TrComponent,
+  TdComponent,
+  TextInputComponent,
+} from '@in/ui';
+
+export { AppHeader };

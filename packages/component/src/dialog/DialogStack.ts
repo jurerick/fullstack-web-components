@@ -13,7 +13,10 @@ export class DialogStack {
     }
 
     addListeners() {
-        document.body.addEventListener("click", this.onFocus.bind(this));
+        const bodyElement = document.body;
+        if(bodyElement) {
+            document.body.addEventListener("click", this.onFocus.bind(this));
+        }
     }
 
     onFocus(ev: MouseEvent) {

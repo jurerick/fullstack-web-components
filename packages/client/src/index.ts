@@ -1,10 +1,12 @@
-import { routes } from "./routes";
-import { Router } from "./router";
+export { routes } from "./routes";
 
-const router = new Router("#root", routes);
+// import { routes } from "./routes";
+// import { Router } from "./router";
 
-export { routes, router, Router };
+// const router = new Router("#root", routes);
 
-export {ButtonComponent} from "@in/ui";
-export { MainView, LoginView, DashboardView } from "./view";
-export { AppHeader, CookieFooter, Background } from "./component";
+// export { routes, router, Router };
+
+// export {ButtonComponent} from "@in/ui";
+// export { MainView, LoginView, DashboardView } from "./view";
+// export { AppHeader, CookieFooter, Background } from "./component";

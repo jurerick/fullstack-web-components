@@ -232,7 +232,7 @@ export const template = () => `
                 ${resolve(styles)}
             </style>
 
-            ${resolve(HeaderTemplate)}
+            ${resolve(HeaderTemplate())}
             <div id="content-root">
                 ${contentTemplate}
             </div>

@@ -2,8 +2,8 @@ import { Component, attachShadow, html, css } from "@in/common";
 import { COOKIES, CookieService } from "./../../service/cookies";
 import { SESSION, SessionService } from "./../../service/session";
 import resolve from "es6-template-strings";
-// import { AppHeader, template as HeaderTemplate } from "./../../component/header/AppHeader";
-// import { CookieFooter, template as FooterTemplate } from "./../../component/footer/CookieFooter";
+import { AppHeader, template as HeaderTemplate } from "./../../component/header/AppHeader";
+import { CookieFooter, template as FooterTemplate } from "./../../component/footer/CookieFooter";
 import { Background } from "./../../component/background/Background";
 
 const sessionService = new SessionService();
@@ -154,14 +154,16 @@ export const template = () => `
             <style>
                 ${resolve(styles)}
             </style>
-            
+            ${resolve(HeaderTemplate())}
             <div id="content-root">
                 ${contentTemplate}
             </div>
-            
+
+            ${resolve(FooterTemplate())}
         </template>
     </main-view>
 `;
 
 export { ButtonComponent } from "@in/ui";
-export { Background };
+
+export { AppHeader, CookieFooter, Background };

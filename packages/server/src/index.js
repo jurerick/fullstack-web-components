@@ -1,3 +1,6 @@
+import { installShimOnGlobal } from '@in/dom-shim';
+installShimOnGlobal();
+
 import chalk from 'chalk';
 import express from 'express';
 import path from 'path';
@@ -15,7 +18,7 @@ import apiRouter from './middleware/api.js';
 import { configurePassport } from './service/passport.js';
 import { config } from './config.js';
 
-// import ssr from "./middleware/ssr.js";
+import ssr from "./middleware/ssr.js";
 
 const app = express();
 const env = process.env.NODE_ENV || 'development';
@@ -86,13 +89,13 @@ app.use(
 
 app.use('/api', apiRouter);
 
-app.get('/*', (req, res) => {
-  res.sendFile(clientPath('index.html'));
-});
+// app.get('/*', (req, res) => {
+//   res.sendFile(clientPath('index.html'));
+// });
 
-// app.get("/", ssr);
-// app.get("/login", ssr);
-// app.get("/dashboard", ssr);
+app.get("/", ssr);
+app.get("/login", ssr);
+app.get("/dashboard", ssr);
 
 server.listen(port, () => {
   const addr = `${protocol === 'HTTPS' ? 'https' : 'http'}://localhost:${port}`;

@@ -17,13 +17,11 @@ export type ContactResponse = {
 }
 
 export class ContactService {
-    private channel: BroadcastChannel;
     private channelName: string;
     private path = "api/contacts";
 
     constructor (channelName: string) {
         this.channelName = channelName;
-        this.channel = new BroadcastChannel(this.channelName);
     }
 
     async getContacts (): Promise<ContactResponse> {
@@ -44,10 +42,15 @@ export class ContactService {
     }
 
     processContacts(model: ContactResponse): ContactResponse {
-        this.channel.postMessage({
-            type: "data",
-            detail: model
-        });
+        const channel = new BroadcastChannel(this.channelName);
+
+        setTimeout(() => {
+            channel.postMessage({
+                type: "data",
+                detail: model
+            });
+        }, 1);
+
         return model;
     }
 
