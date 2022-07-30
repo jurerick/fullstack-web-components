@@ -12,6 +12,9 @@ export default async (env) => {
       index: './src/index.ts',
       polyfill: './src/polyfill.ts',
       ponyfill: './src/ponyfill.ts',
+      //main: "./src/view/main/MainView.ts",
+      //login: "./src/view/login/LoginView.ts",
+      //dashboard: "./src/view/dashboard/DashboardView"
     },
     output: {
       filename: '[name].js',

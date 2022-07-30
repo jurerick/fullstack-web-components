@@ -1,45 +1,53 @@
 import { Component, attachShadow, html, css } from "@in/common";
 import { COOKIES, CookieService } from "./../../service/cookies";
 import { SESSION, SessionService } from "./../../service/session";
+import resolve from "es6-template-strings";
+// import { AppHeader, template as HeaderTemplate } from "./../../component/header/AppHeader";
+// import { CookieFooter, template as FooterTemplate } from "./../../component/footer/CookieFooter";
+import { Background } from "./../../component/background/Background";
 
 const sessionService = new SessionService();
+
+const contentTemplate = html`
+    <div 
+        class="section" 
+        is="in-bg"
+        background="/style/asset/timon-studler-BIk2ANMmNz4-unsplash.jpg"
+    >
+        <div class="blurb half right">
+            <h2>Your Last Contact List</h2>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quod eo
+            liquidius faciet, si perspexerit rerum inter eas verborumne sit
+            controversia.
+            </p>
+            <a href="/dashboard" class="cta dashboard-link" hidden>View Contacts</a>
+        </div>
+        </div>
+        <div 
+        class="section light"
+        is="in-bg"
+        background="/style/asset/valiant-made-zBkVp3E2CnE-unsplash.jpg"
+        >
+        <div class="blurb">
+            <h2>Turn Group Chats Into Live Events</h2>
+            <p>
+            Indicant pueri, in quibus ut in speculis natura cernitur. Itaque ad
+            tempus ad Pisonem omnes. Quis hoc dicit? Philosophi autem in suis
+            lectulis plerumque moriuntur. Videmus in quodam volucrium genere non
+            nulla indicia pietatis, cognitionem, memoriam, in multis etiam
+            desideria videmus. Quid sequatur, quid repugnet, vident. Atqui
+            pugnantibus et contrariis studiis consiliisque semper utens nihil
+            quieti videre, nihil tranquilli potest.
+            </p>
+        </div>
+    </div>
+`;
 
 const shadowTemplate = html`
     <app-header>Header</app-header>
     <div id="content-root">
-        <div 
-            class="section" 
-            is="in-bg"
-            background="/style/asset/timon-studler-BIk2ANMmNz4-unsplash.jpg"
-        >
-            <div class="blurb half right">
-                <h2>Your Last Contact List</h2>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quod eo
-                liquidius faciet, si perspexerit rerum inter eas verborumne sit
-                controversia.
-                </p>
-                <a href="/dashboard" class="cta dashboard-link" hidden>View Contacts</a>
-            </div>
-        </div>
-        <div 
-            class="section light"
-            is="in-bg"
-            background="/style/asset/valiant-made-zBkVp3E2CnE-unsplash.jpg"
-        >
-            <div class="blurb">
-                <h2>Turn Group Chats Into Live Events</h2>
-                <p>
-                Indicant pueri, in quibus ut in speculis natura cernitur. Itaque ad
-                tempus ad Pisonem omnes. Quis hoc dicit? Philosophi autem in suis
-                lectulis plerumque moriuntur. Videmus in quodam volucrium genere non
-                nulla indicia pietatis, cognitionem, memoriam, in multis etiam
-                desideria videmus. Quid sequatur, quid repugnet, vident. Atqui
-                pugnantibus et contrariis studiis consiliisque semper utens nihil
-                quieti videre, nihil tranquilli potest.
-                </p>
-            </div>
-        </div>
+        ${contentTemplate}
     </div>
     <cookie-footer></cookie-footer>
 `;
@@ -140,3 +148,20 @@ export class MainView extends HTMLElement {
         })
     }
 }
+export const template = () => `
+    <main-view>
+        <template shadowroot="open">
+            <style>
+                ${resolve(styles)}
+            </style>
+            
+            <div id="content-root">
+                ${contentTemplate}
+            </div>
+            
+        </template>
+    </main-view>
+`;
+
+export { ButtonComponent } from "@in/ui";
+export { Background };

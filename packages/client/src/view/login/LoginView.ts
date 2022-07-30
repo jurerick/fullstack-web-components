@@ -2,6 +2,8 @@ import { Component, attachShadow, html, css, Listen } from "@in/common";
 import { LoginRequest, LoginService } from "./../../service/login";
 import { SESSION } from "./../../service/session";
 import { LocationService } from "./../../service/location";
+import { AppHeader, template as HeaderTemplate } from "./../../component/header/AppHeader";
+import resolve from "es6-template-strings";
 
 const loginService = new LoginService();
 const locationService = new LocationService();
@@ -54,15 +56,13 @@ const styles = css`
     }
 `;
 
-const shadowTemplate = html`
-    <app-header></app-header>
-    <div id="content-root">
-        <in-card style="max-width: 320px">
-            <h4 slot="header">Login</h4>
+const contentTemplate = html`
+    <in-card style="max-width: 320px">
+        <h4 slot="header">Login</h4>
 
-            <form name="foo"
-                slot="content"
-            >
+        <form name="foo"
+            slot="content"
+        >
             <fieldset>
                 <legend>Login Form</legend>
                 <label for="username">Username</label>
@@ -89,7 +89,13 @@ const shadowTemplate = html`
                 </button>
             </fieldset>
         </form>
-        </in-card>
+    </in-card>
+`;
+
+const shadowTemplate = html`
+    <app-header></app-header>
+    <div id="content-root">
+        ${contentTemplate}
     </div>
 `;
 
@@ -217,3 +223,22 @@ export class LoginView extends HTMLElement {
         });
     }
 }
+
+
+export const template = () => `
+    <login-view>
+        <template shadowroot="open">
+            <style>
+                ${resolve(styles)}
+            </style>
+
+            ${resolve(HeaderTemplate)}
+            <div id="content-root">
+                ${contentTemplate}
+            </div>
+        </template>
+    </login-view>
+`;
+
+export { ButtonComponent, CardComponent, TextInputComponent } from "@in/ui";
+export { AppHeader }

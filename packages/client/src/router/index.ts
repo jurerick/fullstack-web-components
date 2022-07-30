@@ -1,7 +1,8 @@
 export interface Route {
     path: string;
     tag: string;
-    title?: string; 
+    title?: string;
+    template?: any;
 }
 
 export class Router {

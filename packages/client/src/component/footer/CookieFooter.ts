@@ -1,9 +1,11 @@
 import { Component, attachShadow, html, css, Listen } from "@in/common";
 import { COOKIES, CookieService } from "./../../service/cookies";
+import { buttonStyles } from "@in/ui";
+import resolve from "es6-template-strings";
 
 const cookieService = new CookieService();
 
-const styles = css`
+export const styles = css`
     :host {
         display: flex;
         justify-content: space-between;
@@ -29,7 +31,7 @@ const styles = css`
     }
 `;
 
-const shadowTemplate = html`
+export const shadowTemplate = html`
     <p class="message">
         We use cookies to personalize content and ads, to provide social media
         features and to analyse our traffic.
@@ -38,6 +40,19 @@ const shadowTemplate = html`
         <button is="in-button" class="in-button secondary">Deny</button>
         <button is="in-button" class="in-button primary">Allow</button>
     </div>
+`;
+
+export const template = () => `
+    <cookie-footer>
+        <template shadowroot="open">
+            <style>
+                ${resolve(styles)}
+                ${resolve(buttonStyles)}
+            </style>
+
+            ${resolve(shadowTemplate)}
+        </template>
+    </cookie-footer>
 `;
 
 @Component({
