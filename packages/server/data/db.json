@@ -59,26 +59,6 @@
     ],
     "rowData": [
       {
-        "email": "joe@gmail.com",
-        "firstName": "Joe",
-        "lastName": "Schmoe",
-        "phoneNumber": "(310) 555 5555",
-        "street": "100 Camino Real",
-        "city": "Los Angeles",
-        "region": "CA",
-        "postalCode": "90277"
-      },
-      {
-        "email": "jane@gmail.com",
-        "firstName": "Jane",
-        "lastName": "Schmoe",
-        "phoneNumber": "(310) 777 7777",
-        "street": "100 Camino Real",
-        "city": "Los Angeles",
-        "region": "CA",
-        "postalCode": "90277"
-      },
-      {
         "email": "jim@gmail.com",
         "firstName": "Jim",
         "lastName": "Schmoe",
@@ -93,9 +73,9 @@
         "firstName": "Jason",
         "lastName": "Schmoe",
         "phoneNumber": "(310) 222 2222",
-        "street": "100 Camino Real",
-        "city": "Los Angeles",
-        "region": "CA",
+        "street": "pasking",
+        "city": "pasok",
+        "region": "apasok",
         "postalCode": "90270"
       }
     ]

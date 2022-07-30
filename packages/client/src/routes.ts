@@ -8,19 +8,22 @@ export const routes: Array<Route> = [
         path: "/",
         tag: "main-view",
         title: "In",
-        template: mainTemplate
+        template: mainTemplate,
+        component: "main"
     },
     {
         path: "/login",
         tag: "login-view",
         title: "Login",
-        template: loginTemplate
+        template: loginTemplate,
+        component: "login"
     },
     {
         path: "/dashboard",
         tag: "dashboard-view",
         title: "Contact Dashboard",
-        template: dashboardTemplate
+        template: dashboardTemplate,
+        component: "dashboard"
     }
 ];
 

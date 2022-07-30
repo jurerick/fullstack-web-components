@@ -3,6 +3,7 @@ export interface Route {
     tag: string;
     title?: string;
     template?: any;
+    component: string;
 }
 
 export class Router {

@@ -10,12 +10,11 @@ import { Readable } from "stream";
 import { routes } from "./../../../client/dist/index.js";
 
 const clientPath = (filename) => {
-    console.log("pasok");
-    if(filename != "undefined.js") {
-        console.log(`${filename} : ${process.cwd()}`);
+    // if(filename != "undefined.js") {
+        // console.log(`${filename} : ${process.cwd()}`);
         return resolve(`${process.cwd()}../../client/dist/${filename}`);
-    }
-    return;
+    // }
+    // return;
 };
 const stylePath = (filename) => {
     return resolve(`${process.cwd()}../../style/dist/${filename}`);
@@ -52,13 +51,28 @@ function* renderApp(route,template) {
         <html>
             <head>
                 <title>${route.title}</title>
-                <style rel="stylesheet" type="text/css">${styles}</style>
-                
+                <style rel="stylesheet" type="text/css">
+                    @import url("/style/font/Lato-Regular.ttf");
+                    @import url("/style/font/Lato-Black.ttf");
+                </style>
+                <style rel="stylesheet" type="text/css">
+                    ${styles}
+                </style>
+                <script type="module">
+                    ${readClientFile("polyfill.js")}
+                </script>
             </head>
             <body>
+                ${htmlTemplates}
                 <div id="root">`;
             yield* render(template);
             yield `</div>
+                <script type="module">
+                    ${readClientFile(`ponyfill.js`)}
+                </script>
+                <script type="module">
+                    ${readClientFile(`${route.component}.js`)}
+                </script>
             </body>
         </html>
     `;
@@ -91,7 +105,7 @@ export default async (req, res, next) => {
 
     let stream = await renderStream(ssrResult);
 
-    stream = stream.replace(/<template shadowroot="open"><\/template>/g, '');
+    // stream = stream.replace(/<template shadowroot="open"><\/template>/g, '');
 
     res.status(200).send(stream);
 };
